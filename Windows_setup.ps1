@@ -20,7 +20,7 @@ $ProgressPreference = 'SilentlyContinue'
 $jdk19 = Get-WmiObject -Class Win32_Product -filter "Vendor='Oracle Corporation'" |where Caption -clike "Java(TM) SE Development Kit 19*"
 if (!($jdk19)){
     echo "`t`tDownnloading Java JDK-19 ...."
-    wget "https://download.oracle.com/java/19/latest/jdk-19_windows-x64_bin.exe" -O jdk-19.exe  
+    wget "https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe" -O jdk-19.exe  
     echo "`n`t`tJDK-19 Downloaded, lets start the Installation process"
     start -wait jdk-19.exe
     rm jdk-19.exe
@@ -41,6 +41,11 @@ if (!($jre8)){
     echo "`n`nRequired JRE-8 is Installed`n"
     $jre8
 }
+##Downloading Jython.jar and Jruby.jar for Environment
+$jruby="https://repo1.maven.org/maven2/org/jruby/jruby-complete/9.4.3.0/jruby-complete-9.4.3.0.jar"
+$jython="https://repo1.maven.org/maven2/org/python/jython-standalone/2.7.3/jython-standalone-2.7.3.jar"
+Invoke-Webrequest -Uri $jython -OutFile Jython.jar -verbose
+Invoke-Webrequest -Uri $jruby -OutFile Jruby.jar -verbose
 
 # Downloading Burp Suite Professional
 if (Test-Path burpsuite_pro_v*.jar){
