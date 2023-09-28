@@ -41,13 +41,13 @@ if (!($jre8)){
 
 # Downloading Burp Suite Professional
 echo "Downloading Burp Suite Pro"
-$burp="https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar"
+$burp="https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar" -verbose
 iwr -Uri $burp -OutFile Burp-Suite-Pro.jar
 
 
 # Creating Burp.bat file with command for execution
 if (Test-Path burp.bat) {rm burp.bat}
-$path = "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:`"$pwd\loader.jar`" -noverify -jar `"$pwd\burpsuite_pro_v$version.jar`""
+$path = "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:`"$pwd\loader.jar`" -noverify -jar `"$pwd\Burp-Suite-Pro.jar`""
 $path | add-content -path Burp.bat
 echo "`nBurp.bat file is created"
 
