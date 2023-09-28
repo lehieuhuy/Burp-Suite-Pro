@@ -41,8 +41,8 @@ if (!($jre8)){
 
 # Downloading Burp Suite Professional
 echo "Downloading Burp Suite Pro"
-$burp="https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar" -verbose
-iwr -Uri $burp -OutFile Burp-Suite-Pro.jar
+$burp="https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar"
+iwr -Uri $burp -OutFile Burp-Suite-Pro.jar -verbose
 
 
 # Creating Burp.bat file with command for execution
