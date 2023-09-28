@@ -40,7 +40,8 @@ if (!($jre8)){
 }
 
 # Downloading Burp Suite Professional
-iwr -Uri https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar -Outfile Burp-Suite-Pro.jar
+$burp="https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar"
+iwr -Uri $burp -OutFile Burp-Suite-Pro.jar
 
 
 # Creating Burp.bat file with command for execution
