@@ -1,14 +1,21 @@
 # Name is Important =))
-write-host " #     # #     # #     #    #       ####### " -foregroundcolor "Red"
-write-host " #     # #     #  #   #     #       #       " -foregroundcolor "Red"
-write-host " #     # #     #   # #      #       #       " -foregroundcolor "White"
-write-host " ####### #     #    #       #       #####   " -foregroundcolor "White"
-write-host " #     # #     #    #       #       #       " -foregroundcolor "Green"
-write-host " #     # #     #    #       #       #       " -foregroundcolor "Green"
-write-host " #     #  #####     #       ####### ####### " -foregroundcolor "Yellow"
-                                  
+write-host " HHHHHHHHH     HHHHHHHHHUUUUUUUU     UUUUUUUUYYYYYYY       YYYYYYY     LLLLLLLLLLL             EEEEEEEEEEEEEEEEEEEEEE " -foregroundcolor "Red"
+write-host " H:::::::H     H:::::::HU::::::U     U::::::UY:::::Y       Y:::::Y     L:::::::::L             E::::::::::::::::::::E " -foregroundcolor "Red"
+write-host " H:::::::H     H:::::::HU::::::U     U::::::UY:::::Y       Y:::::Y     L:::::::::L             E::::::::::::::::::::E " -foregroundcolor "Red"
+write-host " HH::::::H     H::::::HHUU:::::U     U:::::UUY::::::Y     Y::::::Y     LL:::::::LL             EE::::::EEEEEEEEE::::E " -foregroundcolor "Yellow"
+write-host "   H:::::H     H:::::H   U:::::U     U:::::U YYY:::::Y   Y:::::YYY       L:::::L                 E:::::E       EEEEEE " -foregroundcolor "Yellow"
+write-host "   H:::::H     H:::::H   U:::::D     D:::::U    Y:::::Y Y:::::Y          L:::::L                 E:::::E              " -foregroundcolor "Yellow"
+write-host "   H::::::HHHHH::::::H   U:::::D     D:::::U     Y:::::Y:::::Y           L:::::L                 E::::::EEEEEEEEEE    " -foregroundcolor "Green"
+write-host "   H:::::::::::::::::H   U:::::D     D:::::U      Y:::::::::Y            L:::::L                 E:::::::::::::::E    " -foregroundcolor "Green"
+write-host "   H:::::::::::::::::H   U:::::D     D:::::U       Y:::::::Y             L:::::L                 E:::::::::::::::E    " -foregroundcolor "Green"
+write-host "   H::::::HHHHH::::::H   U:::::D     D:::::U        Y:::::Y              L:::::L                 E::::::EEEEEEEEEE    " -foregroundcolor "White"
+write-host "   H:::::H     H:::::H   U:::::D     D:::::U        Y:::::Y              L:::::L                 E:::::E              " -foregroundcolor "White"
+write-host "   H:::::H     H:::::H   U::::::U   U::::::U        Y:::::Y              L:::::L         LLLLLL  E:::::E       EEEEEE " -foregroundcolor "White"
+write-host " HH::::::H     H::::::HH U:::::::UUU:::::::U        Y:::::Y            LL:::::::LLLLLLLLL:::::LEE::::::EEEEEEEE:::::E " -foregroundcolor "Blue"
+write-host " H:::::::H     H:::::::H  UU:::::::::::::UU      YYYY:::::YYYY         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Blue
+write-host " H:::::::H     H:::::::H    UU:::::::::UU        Y:::::::::::Y         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Orange"
+write-host " HHHHHHHHH     HHHHHHHHH      UUUUUUUUU          YYYYYYYYYYYYY         LLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEE " -foregroundcolor "Orange"
 
-echo "  This script is made by Cyber Zest"
 # Set Wget Progress to Silent, Becuase it slows down Downloading by 50x
 echo "Setting Wget Progress to Silent, Becuase it slows down Downloading by 50x`n"
 $ProgressPreference = 'SilentlyContinue'
