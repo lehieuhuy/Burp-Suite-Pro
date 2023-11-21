@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'
 $jdk19 = Get-WmiObject -Class Win32_Product -filter "Vendor='Oracle Corporation'" |where Caption -clike "Java(TM) SE Development Kit 19*"
 if (!($jdk19)){
     echo "`t`tDownnloading Java JDK-19 ...."
-    wget "https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi" -O jdk-19.msi  
+    iwr -Uri 'https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi' -OutFile jdk-19.msi  -verbose
     echo "`n`t`tJDK-19 Downloaded, lets start the Installation process"
     start -wait jdk-19.msi
 }else{
@@ -34,7 +34,8 @@ if (!($jdk19)){
 
 # Downloading Burp Suite Professional
 echo "Downloading Burp Suite Pro"
-iwr -Uri "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.9.2&type=Jar" -OutFile Burp-Suite-Pro.jar -verbose
+$burp='https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.10.3.6&type=Jar'
+iwr -Uri $burp -OutFile Burp-Suite-Pro.jar -verbose
 
 
 # Creating Burp.bat file with command for execution
