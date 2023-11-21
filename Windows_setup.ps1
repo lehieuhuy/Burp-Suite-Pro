@@ -13,8 +13,8 @@ write-host "   H:::::H     H:::::H   U:::::D     D:::::U        Y:::::Y         
 write-host "   H:::::H     H:::::H   U::::::U   U::::::U        Y:::::Y              L:::::L         LLLLLL  E:::::E       EEEEEE " -foregroundcolor "White"
 write-host " HH::::::H     H::::::HH U:::::::UUU:::::::U        Y:::::Y            LL:::::::LLLLLLLLL:::::LEE::::::EEEEEEEE:::::E " -foregroundcolor "Blue"
 write-host " H:::::::H     H:::::::H  UU:::::::::::::UU      YYYY:::::YYYY         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Blue"
-write-host " H:::::::H     H:::::::H    UU:::::::::UU        Y:::::::::::Y         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Orange"
-write-host " HHHHHHHHH     HHHHHHHHH      UUUUUUUUU          YYYYYYYYYYYYY         LLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEE " -foregroundcolor "Orange"
+write-host " H:::::::H     H:::::::H    UU:::::::::UU        Y:::::::::::Y         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Cyan"
+write-host " HHHHHHHHH     HHHHHHHHH      UUUUUUUUU          YYYYYYYYYYYYY         LLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEE " -foregroundcolor "Cyan"
 
 # Set Wget Progress to Silent, Becuase it slows down Downloading by 50x
 echo "Setting Wget Progress to Silent, Becuase it slows down Downloading by 50x`n"
