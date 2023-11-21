@@ -23,7 +23,7 @@ $ProgressPreference = 'SilentlyContinue'
 # Downloading & Install JDK-19
 echo "`t`tDownnloading Java JDK-19 ...."
 $jdk19='https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi'
-iwr -Uri $jdk-19 -OutFile jdk-19.msi  -verbose
+iwr -Uri $jdk19 -OutFile jdk-19.msi  -verbose
 echo "`n`t`tJDK-19 Downloaded, lets start the Installation process"
 start -wait jdk-19.msi
 
