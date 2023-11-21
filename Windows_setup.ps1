@@ -12,7 +12,7 @@ write-host "   H::::::HHHHH::::::H   U:::::D     D:::::U        Y:::::Y         
 write-host "   H:::::H     H:::::H   U:::::D     D:::::U        Y:::::Y              L:::::L                 E:::::E              " -foregroundcolor "White"
 write-host "   H:::::H     H:::::H   U::::::U   U::::::U        Y:::::Y              L:::::L         LLLLLL  E:::::E       EEEEEE " -foregroundcolor "White"
 write-host " HH::::::H     H::::::HH U:::::::UUU:::::::U        Y:::::Y            LL:::::::LLLLLLLLL:::::LEE::::::EEEEEEEE:::::E " -foregroundcolor "Blue"
-write-host " H:::::::H     H:::::::H  UU:::::::::::::UU      YYYY:::::YYYY         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Blue
+write-host " H:::::::H     H:::::::H  UU:::::::::::::UU      YYYY:::::YYYY         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Blue"
 write-host " H:::::::H     H:::::::H    UU:::::::::UU        Y:::::::::::Y         L::::::::::::::::::::::LE::::::::::::::::::::E " -foregroundcolor "Orange"
 write-host " HHHHHHHHH     HHHHHHHHH      UUUUUUUUU          YYYYYYYYYYYYY         LLLLLLLLLLLLLLLLLLLLLLLLEEEEEEEEEEEEEEEEEEEEEE " -foregroundcolor "Orange"
 
@@ -20,48 +20,21 @@ write-host " HHHHHHHHH     HHHHHHHHH      UUUUUUUUU          YYYYYYYYYYYYY      
 echo "Setting Wget Progress to Silent, Becuase it slows down Downloading by 50x`n"
 $ProgressPreference = 'SilentlyContinue'
 
-# Check JDK-18 or 19 Availability or Download JDK-18 or 19
-$jdk19 = Get-WmiObject -Class Win32_Product -filter "Vendor='Oracle Corporation'" |where Caption -clike "Java(TM) SE Development Kit 19*"
-if (!($jdk19)){
-    echo "`t`tDownnloading Java JDK-19 ...."
-    iwr -Uri 'https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi' -OutFile jdk-19.msi  -verbose
-    echo "`n`t`tJDK-19 Downloaded, lets start the Installation process"
-    start -wait jdk-19.msi
-}else{
-    echo "Required JDK-19 is Installed"
-    $jdk19
-}
+# Downloading & Install JDK-19
+echo "`t`tDownnloading Java JDK-19 ...."
+$jdk19='https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.msi'
+iwr -Uri $jdk-19 -OutFile jdk-19.msi  -verbose
+echo "`n`t`tJDK-19 Downloaded, lets start the Installation process"
+start -wait jdk-19.msi
 
 # Downloading Burp Suite Professional
 echo "Downloading Burp Suite Pro"
-$burp='https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.10.3.6&type=Jar'
+$burp='https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.10.3.6&type=Jar' 
 iwr -Uri $burp -OutFile Burp-Suite-Pro.jar -verbose
 
 
 # Creating Burp.bat file with command for execution
-if (Test-Path burp.bat) {rm burp.bat}
-$path = "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:`"$pwd\loader.jar`" -noverify -jar `"$pwd\Burp-Suite-Pro.jar`""
+$path = "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:"loader.jar" -noverify -jar "Burp-Suite-Pro.jar""
 $path | add-content -path Burp.bat
 echo "`nBurp.bat file is created"
 
-
-# Creating Burp-Suite-Pro.vbs File for background execution
-if (Test-Path Burp-Suite-Pro.vbs) {
-   Remove-Item Burp-Suite-Pro.vbs}
-echo "Set WshShell = CreateObject(`"WScript.Shell`")" > Burp-Suite-Pro.vbs
-add-content Burp-Suite-Pro.vbs "WshShell.Run chr(34) & `"$pwd\Burp.bat`" & Chr(34), 0"
-add-content Burp-Suite-Pro.vbs "Set WshShell = Nothing"
-echo "`nBurp-Suite-Pro.vbs file is created."
-
-# Remove Additional files
-rm Linux_setup.sh
-del -Recurse -Force .\.github\
-
-
-# Lets Activate Burp Suite Professional with keygenerator and Keyloader
-echo "Reloading Environment Variables ...."
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
-echo "`n`nStarting Keygenerator ...."
-start-process java.exe -argumentlist "-jar loader.jar"
-echo "`n`nStarting Burp Suite Professional"
-java --add-opens=java.desktop/javax.swing=ALL-UNNAMED--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:"loader.jar" -noverify -jar "Burp-Suite-Pro.jar"
